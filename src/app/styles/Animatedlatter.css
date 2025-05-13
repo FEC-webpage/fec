@@ -1,0 +1,39 @@
+.text-animate {
+  display: inline-block;
+  opacity: 0;
+  animation: bounceIn 2s 1s forwards;
+  min-width: 10px;
+}
+
+.text-animate-hover {
+  min-width: 10px;
+  display: inline-block;
+  animation-fill-mode: both;
+}
+.text-animate-hover:hover {
+  animation: rubberBand 0.7s;
+  color: #f1dc8d;
+}
+
+/* Generate delays for up to 55 letters */
+.text-animate._1 { animation-delay: 0.04s; }
+.text-animate._2 { animation-delay: 0.08s; }
+.text-animate._3 { animation-delay: 0.12s; }
+.text-animate._4 { animation-delay: 0.16s; }
+.text-animate._5 { animation-delay: 0.2s; }
+.text-animate._6 { animation-delay: 0.24s; }
+.text-animate._7 { animation-delay: 0.28s; }
+.text-animate._8 { animation-delay: 0.32s; }
+.text-animate._9 { animation-delay: 0.36s; }
+.text-animate._10 { animation-delay: 0.4s; }
+.text-animate._11 { animation-delay: 0.44s; }
+.text-animate._12 { animation-delay: 0.48s; }
+.text-animate._13 { animation-delay: 0.52s; }
+.text-animate._14 { animation-delay: 0.56s; }
+.text-animate._15 { animation-delay: 0.6s; }
+.text-animate._16 { animation-delay: 0.64s; }
+.text-animate._17 { animation-delay: 0.68s; }
+.text-animate._18 { animation-delay: 0.72s; }
+.text-animate._19 { animation-delay: 0.76s; }
+.text-animate._20 { animation-delay: 0.8s; }
+/* ...continue up to _55 as needed... */

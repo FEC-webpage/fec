@@ -1,0 +1,25 @@
+/* Typewriter.css */
+.typewriter {
+    color: #19a89ee7;
+    text-decoration: none;
+    overflow: hidden;
+    border-right: 3px solid black;
+    white-space: nowrap;
+    animation: blink-caret 0.75s step-end infinite;
+    font-size: 25px;
+    font-weight: 800;
+    font-family: Manrope;
+  }
+  
+  @keyframes blink-caret {
+    from, to {
+      border-color: transparent;
+    }
+    50% {
+      border-color:white;
+    }
+  }
+  
+  .wrap {
+    border-right: 3px solid black;
+  } 
