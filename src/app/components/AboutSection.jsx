@@ -15,14 +15,6 @@ const AboutSection = () => (
       <div className="flex flex-col items-center relative">
         <div className="relative animate-pulse">
           <img src="./images/logo.png" alt="FEC Logo" className="w-36 h-36 rounded-full border-4 border-cyan-400 shadow-xl" />
-          <svg className="absolute top-0 left-0 w-36 h-36 animate-spin-slow" viewBox="0 0 200 200">
-            <defs>
-              <path id="circle" d="M 100, 100 m -75, 0 a 75, 75 0 1, 0 150, 0 a 75, 75 0 1, 0 -150, 0" />
-            </defs>
-            <text width="200" className="fill-cyan-300 font-bold text-xs">
-              <textPath xlinkHref="#circle">FEC IIT KGP FEC IIT KGP FEC IIT KGP FEC IIT KGP FEC IIT KGP FEC IIT KGPFEC IIT KGP</textPath>
-            </text>
-          </svg>
         </div>
         <p className="mt-4 text-yellow-300 text-sm font-mono tracking-wider uppercase">Since 2015</p>
       </div>

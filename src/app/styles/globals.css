@@ -79,8 +79,12 @@ body {
 }
 
 .neon-text {
-  color: var(--primary-blue);
-  text-shadow: 0 0 8px var(--primary-blue), 0 0 16px var(--primary-blue);
+  color: #3ecbff;
+  text-shadow:
+    0 0 8px #3ecbff,
+    0 0 16px #3ecbff,
+    0 0 32px #135561,
+    0 0 48px #135561;
 }
 
 .neon-yellow {
