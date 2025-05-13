@@ -1,85 +1,100 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { useTheme } from '../theme/ThemeProvider';
 
 const navLinks = [
   { name: 'Home', href: '/' },
-  { name: 'News', href: '/news' },
   { name: 'Blogs', href: '/blogs' },
   { name: 'Courses', href: '/' },
   { name: 'Resources', href: '/' },
   { name: 'Team', href: '/team' },
-  { name: 'Subscribe', href: '/' },
+  { name: 'Contact us', href: '/contact' },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (open && !event.target.closest('nav')) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [open]);
+
   return (
-    <header className="sticky top-0 z-50 bg-gradient-to-r from-[#0f172a] via-[#17203a] to-[#0a1020] shadow-xl border-b border-blue-800">
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled
+        ? "bg-gradient-to-r from-[#0a1020] via-[#042f40] to-[#082a4a] shadow-xl"
+        : "bg-gradient-to-r from-[#0a1020]/95 via-[#042f40]/95 to-[#082a4a]/95 backdrop-blur-md"
+      } border-b border-[#135561]/30`}>
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-4 py-4 md:py-3">
-        <div className="flex items-center gap-3 animate-fade-in">
+        <a href="/" className="flex items-center gap-1 animate-fade-in">
           <img
             src="./images/logo.png"
             alt="FEC Logo"
             className="h-12 w-12 rounded-full border-2 border-cyan-400 shadow-lg"
           />
-          <span className="text-xl md:text-2xl font-bold text-white tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-cyan-300 animate-gradient-x">
-            Finance & Economic Club
+          <span className="text-xl md:text-2xl font-bold text-white tracking-wide 
+            bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-cyan-300 
+            animate-gradient-x hover:from-cyan-300 hover:to-yellow-400 transition-all duration-500">
+            Finance & Economics Club
           </span>
-        </div>
+        </a>
 
-        <div className="hidden md:flex gap-6 items-center">
-          {navLinks.map(link => (
+        <div className="hidden md:flex gap-1 items-center">
+          {navLinks.map((link, index) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-white hover:text-yellow-300 font-semibold px-3 py-2 transition duration-300 ease-in-out rounded-md hover:bg-blue-900/40"
+              className="relative text-gray-200 hover:text-white font-medium mx-1 px-3 py-2 rounded-md overflow-hidden group"
             >
-              {link.name}
+              <span className="absolute inset-0 w-0 bg-gradient-to-r from-[#135561]/20 to-[#135561]/10 transition-all duration-300 ease-out group-hover:w-full"></span>
+              <span className="relative flex items-center">
+                <span className="mr-1 text-[#135561] opacity-0 transform translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">•</span>
+                {link.name}
+              </span>
             </a>
           ))}
-          <button
-            onClick={toggleTheme}
-            className="ml-4 p-2 rounded-full border border-cyan-300 bg-transparent hover:bg-blue-900/40 transition flex items-center justify-center"
-            aria-label="Toggle dark mode"
-          >
-            {theme === 'dark' ? (
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-yellow-300">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0112 21.75c-5.385 0-9.75-4.365-9.75-9.75 0-4.126 2.635-7.626 6.348-9.125a.75.75 0 01.908.325.75.75 0 01-.062.976A7.501 7.501 0 0012 19.5a7.48 7.48 0 006.574-3.906.75.75 0 01.976-.062.75.75 0 01.325.908z" />
-              </svg>
-            ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-cyan-400">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1.5M12 19.5V21M4.219 4.219l1.061 1.061M17.657 17.657l1.061 1.061M3 12h1.5M19.5 12H21M4.219 19.781l1.061-1.061M17.657 6.343l1.061-1.061M12 7.5A4.5 4.5 0 1112 16.5a4.5 4.5 0 010-9z" />
-              </svg>
-            )}
-          </button>
         </div>
 
         <button
-          className="md:hidden p-2 rounded-md border border-cyan-300 hover:bg-blue-900/40 transition"
+          className="md:hidden relative p-2 rounded-md border border-[#135561] hover:border-yellow-300 transition-colors duration-300 overflow-hidden group"
           onClick={() => setOpen(!open)}
+          aria-label={open ? "Close menu" : "Open menu"}
         >
+          <span className="absolute inset-0 w-full bg-gradient-to-tr from-[#135561]/20 via-transparent to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
           {open ? (
-            <XMarkIcon className="h-7 w-7 text-cyan-300" />
+            <XMarkIcon className="h-7 w-7 text-[#135561] group-hover:text-yellow-300 transition-colors duration-300 relative z-10" />
           ) : (
-            <Bars3Icon className="h-7 w-7 text-cyan-300" />
+            <Bars3Icon className="h-7 w-7 text-[#135561] group-hover:text-yellow-300 transition-colors duration-300 relative z-10" />
           )}
         </button>
       </nav>
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-[#0a1020] border-t border-blue-800 shadow-lg animate-slide-down px-4 py-3">
-          <div className="flex flex-col gap-3">
-            {navLinks.map(link => (
+        <div className="md:hidden bg-gradient-to-b from-[#0a1020] to-[#042f40] backdrop-blur-lg shadow-2xl border-t border-[#135561]/20 px-4 py-6 animate-slide-down max-h-[calc(100vh-80px)] overflow-y-auto">
+          <div className="flex flex-col gap-4">
+            {navLinks.map((link, index) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="text-cyan-200 hover:text-yellow-300 font-medium px-2 py-2 transition duration-300 ease-in-out rounded hover:bg-blue-900/40"
+                className="text-gray-200 hover:text-white font-medium py-3 px-4 transition-all duration-300 rounded-md hover:bg-gradient-to-r hover:from-[#135561]/20 hover:to-transparent flex items-center group"
               >
+                <span className="w-0 h-px bg-[#135561] mr-0 group-hover:w-5 group-hover:mr-3 transition-all duration-300"></span>
                 {link.name}
               </a>
             ))}

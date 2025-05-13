@@ -22,7 +22,7 @@ const images = [
 
 const GallerySection = () => (
   <section className="w-full flex flex-col items-center justify-center px-4 py-16 bg-[linear-gradient(135deg,var(--background),var(--primary-blue),var(--background))]">
-    <div className="max-w-6xl w-full mx-auto bg-[#17203a] rounded-2xl shadow-xl p-8 md:p-12">
+    <div className="max-w-6xl w-full mx-auto bg-[var(--glass-bg)] rounded-3xl shadow-2xl p-8 md:p-12 ">
       <h2 className="text-3xl md:text-4xl font-bold text-cyan-300 mb-8 text-center">Gallery</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {images.map((img, idx) => (
@@ -36,7 +36,7 @@ const GallerySection = () => (
             <img
               src={img.src}
               alt={img.alt}
-              className="w-full h-40 object-cover transform transition-transform duration-300 group-hover:scale-110"
+              className="w-full max-w-full h-40 object-cover transform transition-transform duration-300 group-hover:scale-110"
             />
             <div className="hidden group-hover:flex absolute inset-0 bg-black bg-opacity-40 justify-center items-center text-white font-semibold">
               {img.alt}

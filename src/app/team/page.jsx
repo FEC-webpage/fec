@@ -6,7 +6,7 @@ import '../styles/globals.css';
 export default function Team() {
     return (
         <div className="bg-[var(--background)] text-[var(--foreground)] min-h-screen relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0a1020] via-[#08a6c2] to-[#0a1020] opacity-90"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0a1020] via-[#1f8698] to-[#0a1020] opacity-90"></div>
             <div className="relative z-10">
             <Navbar />
             <main className="flex-1 flex flex-col items-center justify-center py-16 max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">

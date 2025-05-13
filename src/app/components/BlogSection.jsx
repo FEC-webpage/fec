@@ -61,8 +61,8 @@ const BlogSection = () => (
             rel="noopener noreferrer"
             className="bg-[var(--glass-bg)] hover:bg-[var(--background)] text-[var(--foreground)] rounded-xl shadow-md transition-transform transform hover:scale-105 duration-300 p-6 border border-cyan-800"
           >
-            <h3 className="text-xl font-bold text-yellow-300 mb-2">{blog.title}</h3>
-            <p className="text-gray-300 text-sm mb-4 leading-relaxed">{blog.content}</p>
+            <h3 className="text-xl font-bold text-yellow-300 mb-2 line-clamp-2">{blog.title}</h3>
+            <p className="text-gray-300 text-sm mb-4 leading-relaxed line-clamp-3">{blog.content}</p>
             <span className="text-cyan-300 font-semibold">Read More →</span>
           </a>
         ))}
@@ -84,8 +84,8 @@ const BlogSection = () => (
               alt={post.topic}
               className="w-full h-40 object-cover rounded-lg mb-4"
             />
-            <h4 className="text-lg font-semibold text-cyan-200 mb-1">{post.topic}</h4>
-            <p className="text-gray-300 text-sm flex-grow">{post.content}</p>
+            <h4 className="text-lg font-semibold text-cyan-200 mb-1 line-clamp-2">{post.topic}</h4>
+            <p className="text-gray-300 text-sm flex-grow line-clamp-3">{post.content}</p>
             <span className="mt-3 text-yellow-300 font-semibold">Read More →</span>
           </a>
         ))}
